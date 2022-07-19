@@ -40,7 +40,19 @@ class Album extends React.Component {
           <p data-testid="album-name"><big>{collectionName}</big></p>
           <p data-testid="artist-name">{artistName}</p>
           <img src={ artworkUrl100 } alt={ artistName } />
-          <MusicCard musics={ musics } />
+
+          {
+            musics.map(({ trackName, previewUrl, trackId }) => (
+              <div key={ trackId }>
+                <MusicCard
+                  trackName={ trackName }
+                  previewUrl={ previewUrl }
+                  trackId={ trackId }
+                />
+              </div>
+            ))
+          }
+
         </main>
       </div>
     );
